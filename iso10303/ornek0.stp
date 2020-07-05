@@ -1,0 +1,19 @@
+ISO-10303-21;
+HEADER;
+FILE_DESCRIPTION((),'2;1');
+FILE_NAME('ornek0_model',
+          '2017-02-23T17:52:33',
+          ('sdai-user'),
+          ('ANONYMOUS ORGANISATION'),
+          '',
+          $,
+          $);
+FILE_SCHEMA(('ORNEK0'));
+ENDSEC;
+
+DATA;
+#1= NOKTA(10.,10.);
+#2= NOKTA(20.,20.);
+ENDSEC;
+
+END-ISO-10303-21;

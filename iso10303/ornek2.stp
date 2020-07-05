@@ -1,0 +1,27 @@
+ISO-10303-21;
+HEADER;
+FILE_DESCRIPTION((),'2;1');
+FILE_NAME('TGEO',
+          '2016-12-31T14:34:34',
+          ('sdai-user'),
+          ('ANONYMOUS ORGANISATION'),
+          '',
+          $,
+          $);
+FILE_SCHEMA(('TARGET_GEOMETRY'));
+ENDSEC;
+
+DATA;
+#1= RECTANGLE(#2,#3,#4,#5);
+#2= LINE(#6,#7);
+#3= LINE(#7,#8);
+#4= LINE(#8,#9);
+#5= LINE(#9,#6);
+#6= POINT(0.,0.);
+#7= POINT(100.,0.);
+#8= POINT(100.,100.);
+#9= POINT(0.,100.);
+#10= POLYGON((#6,#7,#8,#9));
+ENDSEC;
+
+END-ISO-10303-21;
