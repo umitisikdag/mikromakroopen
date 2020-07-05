@@ -1,0 +1,79 @@
+CREATE DATABASE mikromakro01;
+
+CREATE TABLE kisiler (Id INT,Ad CHAR(30),Soyad CHAR(30),Yas INT);
+
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (1,'Cemil', 'Yanik',45);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (2,'Hasan', 'Guclu',44);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (3,'Seyfi', 'Zorlu',43);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (4,'Ali', 'Yanik',41);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (5,'Halit', 'Yanik',42);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (6,'Zafer', 'Gezer',47);
+
+SELECT * FROM kisiler;
+
+SELECT * FROM kisiler WHERE Id=4;
+
+SELECT * FROM kisiler WHERE Ad='Cemil';
+
+SELECT * FROM kisiler ORDER BY Yas;
+
+UPDATE kisiler SET Yas=1 WHERE Id=4;
+
+DELETE FROM kisiler WHERE Soyad='Zorlu';
+
+DELETE FROM kisiler;
+
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (1,'Cemil', 'Yanik',45);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (2,'Hasan', 'Guclu',44);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (3,'Seyfi', 'Zorlu',43);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (4,'Ali', 'Yanik',41);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (5,'Halit', 'Yanik',42);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (6,'Zafer', 'Gezer',47);
+
+CREATE TABLE masalar (MasaId INT, OyunAdi CHAR(30));
+INSERT INTO masalar (MasaId,OyunAdi) VALUES (1,'Sabir Kupu');
+INSERT INTO masalar (MasaId,OyunAdi) VALUES (2,'Kizma Birader');
+INSERT INTO masalar (MasaId,OyunAdi) VALUES (3,'Amiral Batti');
+
+CREATE TABLE odalar (OdaId INT, OdaAdi CHAR(30));
+INSERT INTO odalar (OdaId,OdaAdi) VALUES (1,'Ana Salon');
+INSERT INTO odalar (OdaId,OdaAdi) VALUES (2,'Kucuk Salon');
+
+
+CREATE TABLE odamasakisi (OdaId INT,MasaId INT,KisiId INT);
+INSERT INTO odamasakisi (OdaId,MasaId,KisiId) VALUES (1,1,2);
+INSERT INTO odamasakisi (OdaId,MasaId,KisiId) VALUES (1,2,1);
+INSERT INTO odamasakisi (OdaId,MasaId,KisiId) VALUES (2,3,4);
+INSERT INTO odamasakisi (OdaId,MasaId,KisiId) VALUES (2,3,3);
+INSERT INTO odamasakisi (OdaId,MasaId,KisiId) VALUES (1,2,5);
+INSERT INTO odamasakisi (OdaId,MasaId,KisiId) VALUES (1,1,6);
+
+--Kimler Hangi Masada Oturuyor
+SELECT kisiler.Ad,kisiler.Soyad,odamasakisi.MasaId
+FROM kisiler
+INNER JOIN odamasakisi ON kisiler.Id=odamasakisi.KisiId
+ORDER BY kisiler.Ad;
+
+--Kimler Hangi Masada Oturuyor MasaID ye gore sirali
+SELECT odamasakisi.MasaId,kisiler.Ad,kisiler.Soyad,kisiler.Yas
+FROM kisiler
+INNER JOIN odamasakisi ON kisiler.Id=odamasakisi.KisiId
+ORDER BY odamasakisi.MasaId;
+
+
+--Kimler hangi masada oturuyor ve  hangi oyunu oynuyor
+SELECT odamasakisi.MasaId,kisiler.Ad,kisiler.Soyad,kisiler.Yas,masalar.OyunAdi
+FROM odamasakisi
+INNER JOIN kisiler ON kisiler.Id=odamasakisi.KisiId
+INNER JOIN masalar ON masalar.MasaId=odamasakisi.MasaId
+ORDER BY odamasakisi.MasaId;
+
+--Kimler hangi masada oturuyor ve  hangi oyunu oynuyor ve hangi odada yer alýyorlar
+SELECT odamasakisi.MasaId,kisiler.Ad,kisiler.Soyad,kisiler.Yas,masalar.OyunAdi,odalar.OdaAdi
+FROM odamasakisi
+INNER JOIN kisiler ON kisiler.Id=odamasakisi.KisiId
+INNER JOIN masalar ON masalar.MasaId=odamasakisi.MasaId
+INNER JOIN odalar ON odalar.OdaId=odamasakisi.OdaId
+ORDER BY odamasakisi.OdaId;
+
+

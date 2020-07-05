@@ -1,0 +1,57 @@
+CREATE DATABASE mikromakro03;
+
+CREATE TABLE kisiler (Id INT,Ad CHAR(30),Soyad CHAR(30),Yas INT);
+
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (1,'Cemil', 'Yanik',45);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (2,'Hasan', 'Guclu',44);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (3,'Seyfi', 'Zorlu',43);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (4,'Ali', 'Yanik',41);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (5,'Halit', 'Yanik',42);
+INSERT INTO kisiler (Id,Ad,Soyad,Yas)VALUES (6,'Zafer', 'Gezer',47);
+
+CREATE TABLE masalar (MasaId INT, OyunAdi CHAR(30));
+INSERT INTO masalar (MasaId,OyunAdi) VALUES (1,'Sabir Kupu');
+INSERT INTO masalar (MasaId,OyunAdi) VALUES (2,'Kizma Birader');
+INSERT INTO masalar (MasaId,OyunAdi) VALUES (3,'Amiral Batti');
+
+CREATE TABLE odalar (OdaId INT, OdaAdi CHAR(30));
+INSERT INTO odalar (OdaId,OdaAdi) VALUES (1,'Ana Salon');
+INSERT INTO odalar (OdaId,OdaAdi) VALUES (2,'Kucuk Salon');
+
+CREATE TABLE odamasa (OdaId INT,MasaId INT);
+
+INSERT INTO odamasa (OdaId,MasaId) VALUES (1,1);
+INSERT INTO odamasa (OdaId,MasaId) VALUES (1,2);
+INSERT INTO odamasa (OdaId,MasaId) VALUES (2,3);
+INSERT INTO odamasa (OdaId,MasaId) VALUES (2,3);
+INSERT INTO odamasa (OdaId,MasaId) VALUES (1,2);
+INSERT INTO odamasa (OdaId,MasaId) VALUES (1,1);
+
+CREATE TABLE masakisi (MasaId INT,KisiId INT);
+
+INSERT INTO masakisi (MasaId,KisiId) VALUES (1,2);
+INSERT INTO masakisi (MasaId,KisiId) VALUES (2,1);
+INSERT INTO masakisi (MasaId,KisiId) VALUES (3,4);
+INSERT INTO masakisi (MasaId,KisiId) VALUES (3,3);
+INSERT INTO masakisi (MasaId,KisiId) VALUES (2,5);
+INSERT INTO masakisi (MasaId,KisiId) VALUES (1,6);
+
+--kimler hangi masada 
+SELECT kisiler.Ad,kisiler.Soyad,masakisi.MasaId
+FROM kisiler
+INNER JOIN masakisi ON kisiler.Id=masakisi.KisiId
+ORDER BY masakisi.MasaId;
+
+--kimler hangi masada ve odada (2 inner join oldugu icin bir kayit i 2 kere seciyor)
+SELECT kisiler.Ad,kisiler.Soyad,masakisi.MasaId,odamasa.OdaId
+FROM kisiler 
+INNER JOIN masakisi ON kisiler.Id=masakisi.KisiId 
+INNER JOIN odamasa ON odamasa.MasaId=masakisi.MasaId;
+ORDER BY kisiler.Ad;
+
+--Bir kayit in 2 kere secilmesini onlemek icin DISTINCT kullaniyoruz.
+SELECT DISTINCT kisiler.Id,kisiler.Ad,kisiler.Soyad,masakisi.MasaId,odamasa.OdaId
+FROM kisiler 
+INNER JOIN masakisi ON kisiler.Id=masakisi.KisiId 
+INNER JOIN odamasa ON odamasa.MasaId=masakisi.MasaId
+ORDER BY kisiler.Id;

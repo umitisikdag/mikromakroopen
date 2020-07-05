@@ -1,0 +1,15 @@
+Önce c9.io dan hesap alýnýr
+Php workspace oluþturulur
+Php workspace çalýþtýrýlýr
+
+bash konut penceresinde
+
+First, create a PHP workspace so you have PHP, MySQL, and Apache installed right away. You can then make sure you have MySQL installed by running:
+		mysql-ctl install
+Then install phpMyAdmin:
+		phpmyadmin-ctl install
+After the installation is complete you'll just want to make sure mysql is running once more:
+		mysql-ctl start
+After installing phpMyAdmin, you were given a link to access 
+PHPMyAdmin which will follow the pattern of: https://[workspacename]-[username].c9users.io/phpmyadmin. 
+From that link, you can login with your Cloud9 username and a blank password.
