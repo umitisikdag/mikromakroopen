@@ -1,0 +1,12 @@
+ISO 10303 STEP Stardardında yer alan Express dili IFC modellerinin tanimlandigi veri tanimlama dilidir.
+
+Dizinde yer alan dosyalar:
+.exp şema dosyalari
+.stp veri dosyalari
+
+.stp dosyalari .ifc dosyalari ile format olarak aynidir.
+
+Burada gordugunuz .stp dosyalarını ve Revit/Archicad/Allplan ile uretmis oldugunuz bir IFC dosyasini Notepad ile acarak inceleyebilirsiniz.
+
+Bu konuda daha fazla bilgi edinmek isterseniz MSGSU Mimari ve Kentsel Enformatik Programinda Mikro ve Makro Mekanlarda Veri Yönetimi dersine
+katilabilirsiniz.

@@ -1,0 +1,20 @@
+SCHEMA EDM_DUMMY_SCHEMA;
+
+  ENTITY nokta;
+      X : REAL;
+      Y : REAL;
+  END_ENTITY;
+
+  ENTITY cizgi;
+      ust : nokta;
+      alt : nokta;
+  END_ENTITY;
+
+  ENTITY Kare;
+      altkenar : cizgi;
+      ustkenar : cizgi;
+      sagkenar : cizgi;
+      solkenar : cizgi;
+  END_ENTITY;
+
+END_SCHEMA;

@@ -1,0 +1,37 @@
+SCHEMA ORNEK4;
+
+  ENTITY Arazi;
+      icerir : LIST [1:?] OF Bina;
+  END_ENTITY;
+
+  ENTITY Bina;
+      katlari : SET [1:?] OF Kat;
+      ismi    : STRING;
+  END_ENTITY;
+
+  ENTITY Kat;
+      Tavan     : Doseme;
+      Taban     : Doseme;
+      Duvalari  : LIST [1:?] OF Duvar;
+      Kirisleri : LIST [1:?] OF Kiris;
+      Kolonlari : LIST [1:?] OF Kolon;
+      ismi      : STRING;
+  END_ENTITY;
+
+  ENTITY Kolon;
+      KolonNo : INTEGER;
+  END_ENTITY;
+
+  ENTITY Kiris;
+      KirisNo : INTEGER;
+  END_ENTITY;
+
+  ENTITY Duvar;
+      DuvarNo : INTEGER;
+  END_ENTITY;
+
+  ENTITY Doseme;
+      DosemeNo : INTEGER;
+  END_ENTITY;
+
+END_SCHEMA;

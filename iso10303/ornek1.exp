@@ -1,0 +1,17 @@
+SCHEMA ornek1;
+  
+   ENTITY rectangle;
+      border : SET[1:4] OF LINE;
+   END_ENTITY;  
+
+   ENTITY point;
+      x : REAL;
+      y : REAL;
+   END_ENTITY;
+
+   ENTITY line;
+      startp : POINT;
+      endp   : POINT;
+   END_ENTITY;
+
+END_SCHEMA;

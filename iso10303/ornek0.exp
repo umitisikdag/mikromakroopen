@@ -1,0 +1,9 @@
+SCHEMA ornek0;
+
+  ENTITY nokta;
+     x          : REAL;
+     y          : REAL;
+  END_ENTITY;
+
+
+END_SCHEMA;

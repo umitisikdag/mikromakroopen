@@ -1,0 +1,30 @@
+SCHEMA ornek2;
+
+  ENTITY point;
+     x          : REAL;
+     y          : REAL;
+  END_ENTITY;
+
+  ENTITY line;
+    startp : POINT;
+    endp   : POINT;
+  END_ENTITY;
+
+  ENTITY circle;
+    center : POINT;
+    radius : REAL;
+    area   : REAL;
+  END_ENTITY;
+
+  ENTITY rectangle;
+    lowerborder     : LINE;
+    rightmostborder : LINE;
+    upperborder     : LINE;
+    leftmostborder  : LINE;
+  END_ENTITY;
+
+  ENTITY polygon;
+     vertexes : LIST OF POINT;
+  END_ENTITY;
+
+END_SCHEMA;

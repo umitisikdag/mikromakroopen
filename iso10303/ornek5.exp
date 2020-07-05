@@ -1,0 +1,64 @@
+SCHEMA ORNEK5;
+
+  TYPE etiket = STRING;
+  END_TYPE;
+
+  TYPE renk = ENUMERATION OF
+    (KIRMIZI,
+     YESIL,
+     MAVI);
+  END_TYPE;
+
+  TYPE uzunluk_olcusu = REAL;
+  END_TYPE;
+
+  TYPE nokta = REAL;
+  END_TYPE;
+
+  ENTITY sekil
+    SUPERTYPE OF (ONEOF(daire, ucgen, dikdortgen));
+      birim_adi    : etiket;
+      birim_rengi  : OPTIONAL renk;
+      kenar_sayisi : INTEGER;
+      geometri     : coklu_cizgi;
+  END_ENTITY;
+
+  ENTITY daire
+    SUBTYPE OF(sekil);
+      cap : REAL;
+  END_ENTITY;
+
+  ENTITY ucgen
+    SUBTYPE OF(sekil);
+      kenar1_uzunluk : uzunluk_olcusu;
+      kenar2_uzunluk : uzunluk_olcusu;
+      kenar3_uzunluk : uzunluk_olcusu;
+      ATTRIBUTE_1    : ucgen;
+  END_ENTITY;
+
+  ENTITY dikdortgen
+    SUBTYPE OF(sekil);
+      yukseklik : uzunluk_olcusu;
+      genislik  : uzunluk_olcusu;
+  END_ENTITY;
+
+  ENTITY kare
+    SUBTYPE OF(dikdortgen);
+  END_ENTITY;
+
+  ENTITY kartezyen_nokta;
+      x : nokta;
+      y : nokta;
+      z : OPTIONAL nokta;
+  END_ENTITY;
+
+  ENTITY cizgi;
+      nokta_baslangic : kartezyen_nokta;
+      nokta_son       : kartezyen_nokta;
+  END_ENTITY;
+
+  ENTITY coklu_cizgi;
+      cizgiler : LIST OF cizgi;
+  END_ENTITY;
+
+END_SCHEMA;
