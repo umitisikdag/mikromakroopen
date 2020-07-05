@@ -1,0 +1,36 @@
+
+Oracle Otomatik olarak PDBORCL adli plugable DB yi yaratir
+
+Sonra tsnames.ora dosyasýna aþaðýdaki satýrlar eklenir
+-----------------------------------------
+PDB1 =
+ (DESCRIPTION =
+ (ADDRESS_LIST =
+ (ADDRESS = (PROTOCOL = TCP)(HOST = rac1.test.com)(PORT = 1521)))
+ (CONNECT_DATA =
+ (SERVICE_NAME = PDBORCL)
+ )
+  )
+  ---------------------------------------
+
+Bilgisayar açýp kapatýlýr
+  
+sonra TOAD TNS ile  SYS kullanýcý ile ile baðlanarak
+
+ALTER PLUGGABLE DATABASE PDB1 OPEN; 
+
+komutu ile  veritabaný açýlýr
+
+Sonra SYS as SYSDBA baðlanýlarak
+
+GRANT UNLIMITED TABLESPACE TO Umit;
+
+GRANT RESOURCE TO Umit;
+
+Sonra TNS ile Umit isimli plugabbleDB kullanýcýsý ile PDB1 baðlantýsý kullanýlarak baðlanýlýr
+
+----------------------------------------
+Windows ülke ayarlarý Ýngilizce/ABD olacak
+
+----------------------------------Ders icin hazirlanan Sanal 2012
+PDUser: pdbadmin   Passwd :1

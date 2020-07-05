@@ -1,0 +1,14 @@
+
+1.
+Oncelikle database configuration assistant  kullanilarak
+Manage Plugable DBs 
+	PDB1 isimli yeni bir Pluggable DB olusturulur.Olusturlurken pdbadmin kullanicisi yaratilir
+
+2.Oracle SQL Developer da User Olusturma.sql calistirilir 
+
+3.Kullanilan User lar ve sifreleri
+	User: pdbadmin   Passwd :1
+	      PDBUSER 	         1
+
+
+4.Gecerli ornek 14 ve 15 dir
